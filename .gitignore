@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment (if you add later)
+venv/
+.env/
+
+# Database file
+jobs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs (if you add later)
+*.log
+
+# Playwright (if used)
+playwright/.cache/
+DOCS.md
+
