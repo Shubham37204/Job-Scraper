@@ -66,7 +66,8 @@ def is_recent(posted):
 
 def style_sheet(ws, jobs, source_color):
     """Writes jobs to a worksheet with full formatting"""
-    headers = ["#", "Title", "Company", "Posted", "Resume Keywords", "Link"]
+    #headers = ["#", "Title", "Company", "Posted", "Resume Keywords", "Link"]
+    headers = ["#", "Title", "Company", "Verified", "Score", "Posted", "Keywords", "Link"]
 
     header_fill = PatternFill("solid", fgColor=source_color)
     header_font = Font(bold=True, color="FFFFFF")
@@ -79,13 +80,23 @@ def style_sheet(ws, jobs, source_color):
 
     for idx, job in enumerate(jobs, start=1):
         keywords = get_keywords(job.get("title", ""))
+        # ws.append([
+        #     idx,
+        #     job.get("title",   "N/A"),
+        #     job.get("company", "N/A"),
+        #     job.get("posted",  "N/A"),
+        #     keywords,
+        #     job.get("link",    "N/A"),
+        # ])
         ws.append([
             idx,
-            job.get("title",   "N/A"),
-            job.get("company", "N/A"),
-            job.get("posted",  "N/A"),
-            keywords,
-            job.get("link",    "N/A"),
+            job.get("title",          "N/A"),
+            job.get("company",        "N/A"),
+            job.get("verified",       "⚠️ Unverified"),   # ← new
+            job.get("company_score",  "N/A"),              # ← new
+            job.get("posted",         "N/A"),
+            get_keywords(job.get("title", "")),
+            job.get("link",           "N/A"),
         ])
 
         link_cell = ws.cell(row=idx + 1, column=6)
@@ -100,9 +111,11 @@ def style_sheet(ws, jobs, source_color):
     ws.column_dimensions["A"].width = 5
     ws.column_dimensions["B"].width = 38
     ws.column_dimensions["C"].width = 28
-    ws.column_dimensions["D"].width = 14
-    ws.column_dimensions["E"].width = 55
-    ws.column_dimensions["F"].width = 55
+    ws.column_dimensions["D"].width = 18   # Verified
+    ws.column_dimensions["E"].width = 8    # Score
+    ws.column_dimensions["F"].width = 14   # Posted
+    ws.column_dimensions["G"].width = 55   # Keywords
+    ws.column_dimensions["H"].width = 55   # Link
 
 
 def create_excel(jobs):
