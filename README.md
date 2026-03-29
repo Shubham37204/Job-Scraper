@@ -1,8 +1,15 @@
-# 🚀 Job Scraper & Alert System
+# 🚀 Multi-Platform Job Scraper & Digest Email System
 
 An automated **job aggregation and alert system** that scrapes multiple job platforms, filters relevant opportunities, removes duplicates, and sends a **digest email with Excel attachment**.
 
----
+## 🎯 Problem Statement
+
+Job listings are scattered across multiple platforms,
+making it difficult to track relevant opportunities efficiently.
+
+This system aggregates jobs from different platforms,
+filters them, and delivers a single consolidated digest.
+
 
 ## 🔥 Features
 
@@ -14,7 +21,6 @@ An automated **job aggregation and alert system** that scrapes multiple job plat
 * 📧 Email alerts (digest format, not spam)
 * 📊 Excel report attachment
 
----
 
 ## 🧩 Tech Stack
 
@@ -25,7 +31,6 @@ An automated **job aggregation and alert system** that scrapes multiple job plat
 * **smtplib (Email automation)**
 * **Schedule (cron-like automation)**
 
----
 
 ## ⚙️ Project Structure
 
@@ -44,7 +49,6 @@ job-scraper/
 └── jobs.db               # Local database (ignored)
 ```
 
----
 
 ## 🚀 How It Works
 
@@ -53,7 +57,6 @@ job-scraper/
 3. Stores new jobs in SQLite DB
 4. Sends a **single digest email** with all new jobs
 
----
 
 ## ▶️ Run Locally
 
@@ -62,7 +65,6 @@ pip install -r requirements.txt
 python main.py
 ```
 
----
 
 ## ⏱️ Run Automatically
 
@@ -70,7 +72,6 @@ python main.py
 python scheduler.py
 ```
 
----
 
 ## 🔐 Setup Email Alerts
 
@@ -78,12 +79,9 @@ python scheduler.py
 * Generate **App Password**
 * Add credentials in `notifier.py`
 
----
 
 ## 🎯 Use Case
 
 * Job seekers looking for automated alerts
 * Developers learning web scraping + automation
 * Building real-world data pipelines
-
----
